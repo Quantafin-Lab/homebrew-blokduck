@@ -4,10 +4,10 @@
 # bd_installer) from the GitHub release tarballs published by
 # .github/workflows/homebrew.yml (`mac-native` job).
 #
-# The `version` string and `__ARM_SHA256__`/`__X86_SHA256__` placeholders are
-# stamped by CI to match VERSION and the freshly built tarballs at release time
-# (`publish` job in .github/workflows/homebrew.yml). Keep the checked-in
-# `version` in sync with VERSION — CI asserts this before release.
+# The `version` string and the per-architecture SHA-256 checksums are stamped
+# by your release workflow (.github/workflows/homebrew.yml in the
+# Quantafin-Lab/blokduck source repo) to match VERSION and the freshly built
+# tarballs at release time.
 #
 # Usage (after the release is published):
 #   brew install https://github.com/Quantafin-Lab/blokduck/releases/latest/download/blokduck.rb
@@ -22,10 +22,10 @@ class Blokduck < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/Quantafin-Lab/blokduck/releases/download/v0.7.0/bd_obfuscate-aarch64-apple-darwin-v0.7.0.tar.gz"
-      sha256 "__ARM_SHA256__"
+      sha256 "18868acdddaee95857d1cbac2bbdbb534f5c5519ccde0678d5b723910f13974b"
     else
       url "https://github.com/Quantafin-Lab/blokduck/releases/download/v0.7.0/bd_obfuscate-x86_64-apple-darwin-v0.7.0.tar.gz"
-      sha256 "__X86_SHA256__"
+      sha256 "f62b4e19cd55fd81ce8a145c6b5931ca68f77907ee964faa12c037488abe169b"
     end
   end
 
