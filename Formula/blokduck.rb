@@ -17,14 +17,14 @@
 class Blokduck < Formula
   desc "On-device redaction of sensitive documents (PII/PHI) with a local web UI"
   homepage "https://github.com/Quantafin-Lab/blokduck"
-  version "0.7.22"
+  version "0.7.23"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/Quantafin-Lab/blokduck/releases/download/v0.7.22/bd_obfuscate-aarch64-apple-darwin-v0.7.22.tar.gz"
+      url "https://github.com/Quantafin-Lab/blokduck/releases/download/v0.7.23/bd_obfuscate-aarch64-apple-darwin-v0.7.23.tar.gz"
       sha256 "__ARM_SHA256__"
     else
-      url "https://github.com/Quantafin-Lab/blokduck/releases/download/v0.7.22/bd_obfuscate-x86_64-apple-darwin-v0.7.22.tar.gz"
+      url "https://github.com/Quantafin-Lab/blokduck/releases/download/v0.7.23/bd_obfuscate-x86_64-apple-darwin-v0.7.23.tar.gz"
       sha256 "__X86_SHA256__"
     end
   end
