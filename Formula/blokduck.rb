@@ -4,16 +4,17 @@
 # bd_installer) from the GitHub release tarballs published by
 # .github/workflows/homebrew.yml (`mac-native` job).
 #
-# The `version` string and the per-architecture SHA-256 checksums are stamped
-# by your release workflow (.github/workflows/homebrew.yml in the
-# Quantafin-Lab/blokduck source repo) to match VERSION and the freshly built
-# tarballs at release time.
+# The `version` string and the per-architecture SHA-256 placeholders (ARM and
+# X86) are stamped by CI to match VERSION and the freshly built tarballs at
+# release time (`publish` job in .github/workflows/homebrew.yml). Keep the
+# checked-in `version` in sync with VERSION — CI asserts this before release.
 #
-# Usage (after the release is published):
-#   brew install https://github.com/Quantafin-Lab/blokduck/releases/latest/download/blokduck.rb
-# Or via a tap repo (Quantafin-Lab/homebrew-blokduck), with this file copied to
-#   Formula/blokduck.rb:
+# Usage (after the release is published). Homebrew 4+ will not install a
+# formula straight from a release URL, so use the tap (this file copied to
+#   Formula/blokduck.rb):
 #   brew tap quantafin-lab/homebrew-blokduck && brew install blokduck
+# or, equivalently, the fully-qualified name (auto-taps):
+#   brew install quantafin-lab/homebrew-blokduck/blokduck
 class Blokduck < Formula
   desc "On-device redaction of sensitive documents (PII/PHI) with a local web UI"
   homepage "https://github.com/Quantafin-Lab/blokduck"
@@ -22,10 +23,10 @@ class Blokduck < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/Quantafin-Lab/blokduck/releases/download/v0.12.12/bd_obfuscate-aarch64-apple-darwin-v0.12.12.tar.gz"
-      sha256 "__ARM_SHA256__"
+      sha256 "ac9aa26cf507b31e1000cdff3ea8c0387053e24af1acd3ee13bf32aa5b32ba20"
     else
       url "https://github.com/Quantafin-Lab/blokduck/releases/download/v0.12.12/bd_obfuscate-x86_64-apple-darwin-v0.12.12.tar.gz"
-      sha256 "__X86_SHA256__"
+      sha256 "f25e14ae888c816a8263a92885fb1fc9c932870efa9cb0e59ae125bfc08de0de"
     end
   end
 
